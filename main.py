@@ -23,11 +23,18 @@ def update():
 	cpu_data.setText(f"CPU: {PCData.get_cpu()}%")
 	virtual_memory_data.setText(f"Virtual Memory: {PCData.get_ram()}%")
 	process.setText(f"Process: {PCData.get_process()}")
-	battery_percent.setText(f"Battery percent: {int(PCData.get_battery().percent)}%")
+	battery_percent.setText(f"Battery charge: {int(PCData.get_battery().percent)}%")
 	power_plugged.setText(f"Power plugged: {PCData.get_battery().power_plugged}")
 
 def load_manage():
-	load_manager = LoadManage(cpu_data.text(), virtual_memory_data.text(), battery_percent.text())
+	if not cpu_data or not virtual_memory_data or not process or not battery_percent or not power_plugged:
+		return
+
+	load_manager = LoadManage(
+		cpu_data.text(), 
+		virtual_memory_data.text(), 
+		battery_percent.text() if PCData.has_battery() else None
+	)
 	load_manager.manage()
 
 		
@@ -40,7 +47,7 @@ def run_application():
 	cpu_data = QAction(f"CPU: {PCData.get_cpu()}%")
 	virtual_memory_data = QAction(f"Virtual Memory: {PCData.get_ram()}%")
 	process = QAction(f"Process: {PCData.get_process()}")
-	battery_percent = QAction(f"Battery percent: {int(PCData.get_battery().percent)}%")
+	battery_percent = QAction(f"Battery charge: {int(PCData.get_battery().percent)}%")
 	power_plugged = QAction(f"Power plugged: {PCData.get_battery().power_plugged}")
 
 	exit = QAction("Exit", triggered=lambda: app.quit())
@@ -68,6 +75,7 @@ def run_application():
 
 
 def main():
+	print(1)
 	run_application()
 
 

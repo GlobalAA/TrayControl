@@ -4,10 +4,10 @@ from plyer import notification
 
 
 class LoadManage:
-	def __init__(self, cpu, virtual_memory, battery_percent) -> None:
+	def __init__(self, cpu, virtual_memory, battery_percent: int | None) -> None:
 		self.cpu = int(''.join(re.findall(r'\d+', cpu)))
 		self.virtual_memory = int(''.join(re.findall(r'\d+', virtual_memory)))
-		self.battery_percent = int(''.join(re.findall(r'\d+', battery_percent)))
+		self.battery_percent = int(''.join(re.findall(r'\d+', battery_percent))) if battery_percent != None else None
 
 	def manage(self):
 		if self.cpu >= 90:
@@ -21,6 +21,9 @@ class LoadManage:
 			
 
 	def manage_battery(self):
+		if not self.battery_percent:
+			return
+			
 		if self.battery_percent <= 10:
 			notification.notify("TrayControl warning", "Your battery percentage reaches 10%. You should immediately connect the device to power!", timeout=3)
 			return

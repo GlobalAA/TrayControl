@@ -1,4 +1,7 @@
+from tkinter.messagebox import showwarning
+
 import psutil
+from psutil import _common
 
 
 class Battery:
@@ -21,5 +24,14 @@ class PCData:
 
 	@staticmethod
 	def get_battery():
-		battery: Battery = psutil.sensors_battery()
+		battery: Battery = psutil.sensors_battery() or _common.sbattery(0, 0, True)
 		return battery
+
+	@staticmethod
+	def has_battery():
+		return True if psutil.sensors_battery() else False
+
+	@staticmethod
+	def battery_check():
+		if not psutil.sensors_battery():
+			showwarning('TrayControl message', 'Батарея не найдена!')
