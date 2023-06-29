@@ -1,5 +1,5 @@
 ### About program
-This simple taskmanager in your tray bar\
+This simple taskmanager in your tray bar
 
 ### Tray fields
 - CPU
