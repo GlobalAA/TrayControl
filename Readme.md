@@ -1,14 +1,22 @@
-**Your can install build on day after tomorrow**
+### About program
+This simple taskmanager in your tray bar\
 
-    """
-    Max load
-    cpu - 90%
-    virtual_memory - 90%
+### Field on tray
+- CPU
+- Virtual Memory
+- Process list
+- Battery charge
+- Power plugined
 
-    Notification for battery percent
-    10% - fatal
-    20% - bad
-    30% - okay
-    40% - normal
-    50% - excellent
-    """
+### Instalation 💡
+```python
+git clone https://github.com/GlobalAA/TrayControl.git && cd TrayControl
+pip3 install -r requirements.txt
+```
+
+### For use
+```python
+python3 main.py
+```
+
+[linktree](https://linktr.ee/globalaa)
