@@ -1,7 +1,7 @@
 ### About program
 This simple taskmanager in your tray bar\
 
-### Field on tray
+### Tray fields
 - CPU
 - Virtual Memory
 - Process list
